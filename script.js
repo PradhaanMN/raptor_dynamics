@@ -443,6 +443,12 @@
       el.style.transitionDelay = `${(i % 3) * 0.1}s`;
     });
 
+    // Systems / impact / execution cards
+    document.querySelectorAll('.approach-card').forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${(i % 3) * 0.1}s`;
+    });
+
     // Event items
     document.querySelectorAll('.event-item').forEach((el, i) => {
       el.classList.add('reveal');
