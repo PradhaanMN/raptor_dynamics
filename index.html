@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raptor Dynamics | Drone Innovation Club</title>
+  <meta name="description" content="Raptor Dynamics is a premier drone innovation club pushing the boundaries of autonomous flight, engineering, and aerial technology." />
+  <meta name="keywords" content="drone club, raptor dynamics, UAV, autonomous flight, drone engineering, aerial robotics" />
+  <meta property="og:title" content="Raptor Dynamics | Drone Innovation Club" />
+  <meta property="og:description" content="Innovate. Integrate. Elevate. Raptor Dynamics — building the future of flight." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== NAV ========== -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo" id="nav-logo-link">
+        <img src="logo_mark_clean.png" alt="Raptor Dynamics Logo" class="nav-logo-img" />
+        <span class="nav-brand">RAPTOR <span class="brand-accent">DYNAMICS</span></span>
+      </a>
+      <button class="nav-hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
+        <li><a href="#vision" class="nav-link" id="nav-vision">Vision</a></li>
+        <li><a href="#projects" class="nav-link" id="nav-projects">Projects</a></li>
+        <li><a href="#events" class="nav-link" id="nav-events">Events</a></li>
+        <li><a href="#team" class="nav-link" id="nav-team">Team</a></li>
+        <li><a href="#team" class="nav-link nav-cta" id="nav-team-cta">Our Team</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="home" class="hero" aria-label="Hero section">
+    <div class="hero-bg-overlay"></div>
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-institution-card hero-institution-floating" aria-label="NIE Mysuru">
+      <img src="nie-logo.svg" alt="NIE Mysuru Logo" class="hero-inst-logo" />
+      <div class="hero-inst-text">
+        <span class="hero-inst-tag">NIE Mysuru</span>
+        <span class="hero-inst-name">The National Institute of Engineering, Mysuru</span>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-title-wrap">
+        <img src="logo_mark_clean.png" alt="Raptor Dynamics Club Logo" class="hero-club-logo-home" />
+        <h1 class="hero-title">
+          <span class="title-line1">RAPTOR</span>
+          <span class="title-line2">DYNAMICS</span>
+        </h1>
+      </div>
+      <p class="hero-tagline">Innovate. Integrate. Elevate.</p>
+      <p class="hero-subtitle">
+        Pioneering the future of autonomous flight through cutting-edge drone technology,
+        collaborative engineering, and a passion for aerial innovation.
+      </p>
+      <div class="hero-actions">
+        <a href="#about" class="btn btn-primary" id="hero-explore-btn">
+          <span>Explore Club</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#team" class="btn btn-outline" id="hero-team-btn">Meet the Team</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section about-section" aria-label="About section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who We Are</span>
+        <h2 class="section-title">About <span class="gradient-text">Raptor Dynamics</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead">
+            Raptor Dynamics is a student-driven drone innovation club dedicated to pushing the boundaries of Unmanned Aerial Vehicles (UAVs) and autonomous flight systems.
+          </p>
+          <p>
+            Founded with a vision to bridge the gap between academic learning and real-world engineering, we bring together passionate individuals from diverse disciplines — mechanical, electronics, computer science, and more — to collaborate on drone design, development, and deployment.
+          </p>
+          <p>
+            From building custom FPV racing drones to engineering fully autonomous waypoint-guided systems, Raptor Dynamics is a space where ideas take flight. Our members gain hands-on experience in aerodynamics, embedded systems, computer vision, and flight dynamics.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item" id="highlight-interdisciplinary">
+              <div class="highlight-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+              </div>
+              <div>
+                <h3>Interdisciplinary Learning</h3>
+                <p>Combining robotics, avionics, programming and design thinking</p>
+              </div>
+            </div>
+            <div class="highlight-item" id="highlight-handson">
+              <div class="highlight-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <div>
+                <h3>Hands-On Engineering</h3>
+                <p>Build, test, and fly real drones from scratch</p>
+              </div>
+            </div>
+            <div class="highlight-item" id="highlight-competitions">
+              <div class="highlight-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div>
+                <h3>Competitions & Recognition</h3>
+                <p>Representing at national and international drone competitions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="drone-showcase">
+            <div class="drone-card">
+              <img src="logo_clean.png" alt="Raptor Dynamics Club Logo" class="drone-logo-large" />
+              <div class="drone-card-glow"></div>
+            </div>
+            <div class="floating-badge badge-top-right">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Engineering Excellence
+            </div>
+            <div class="floating-badge badge-bottom-left">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Est. 2026
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VISION & MISSION ========== -->
+  <section id="vision" class="section vision-section" aria-label="Vision and Mission">
+    <div class="vision-bg-overlay"></div>
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Our Purpose</span>
+        <h2 class="section-title white">Vision & <span class="gradient-text">Mission</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="vm-grid">
+        <div class="vm-card vision-card" id="vision-card">
+          <div class="vm-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Our Vision</h3>
+          <p>
+            To be a leading hub of drone innovation and aerial robotics, fostering a community where students transform bold ideas into real-world flying machines — advancing the frontiers of autonomous technology and inspiring the next generation of aerospace engineers.
+          </p>
+          <div class="vm-accent-line"></div>
+        </div>
+        <div class="vm-card mission-card" id="mission-card">
+          <div class="vm-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3>Our Mission</h3>
+          <p>
+            To cultivate a collaborative environment where members develop practical skills in UAV design, embedded systems, and flight dynamics; participate in cutting-edge competitions; contribute to research in aerial autonomy; and empower each other to build solutions that solve real-world challenges through the power of flight.
+          </p>
+          <div class="vm-accent-line"></div>
+        </div>
+      </div>
+      <div class="values-row">
+        <div class="value-chip" id="value-innovation">
+          <span class="chip-dot"></span> Innovation
+        </div>
+        <div class="value-chip" id="value-collaboration">
+          <span class="chip-dot"></span> Collaboration
+        </div>
+        <div class="value-chip" id="value-excellence">
+          <span class="chip-dot"></span> Excellence
+        </div>
+        <div class="value-chip" id="value-integrity">
+          <span class="chip-dot"></span> Integrity
+        </div>
+        <div class="value-chip" id="value-impact">
+          <span class="chip-dot"></span> Real-World Impact
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects" class="section projects-section" aria-label="Projects section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What We Build</span>
+        <h2 class="section-title">Our <span class="gradient-text">Projects</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card" id="project-fpv">
+          <div class="project-tag">FPV Racing</div>
+          <div class="project-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>FPV Racing Drone</h3>
+          <p>High-speed first-person-view racing quadcopters built from scratch. Custom frames, tuned PIDs, and lightning-fast reflexes on the track.</p>
+          <div class="project-tags-row">
+            <span>Betaflight</span><span>Carbon Fiber</span><span>4S LiPo</span>
+          </div>
+        </div>
+
+        <div class="project-card featured" id="project-autonomous">
+          <div class="project-tag">Autonomous</div>
+          <div class="project-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Autonomous Navigation System</h3>
+          <p>GPS-guided and computer-vision-enabled autonomous drones capable of waypoint navigation, obstacle avoidance, and precision landing.</p>
+          <div class="project-tags-row">
+            <span>ArduPilot</span><span>ROS2</span><span>OpenCV</span><span>Pixhawk</span>
+          </div>
+        </div>
+
+        <div class="project-card" id="project-payload">
+          <div class="project-tag">Payload</div>
+          <div class="project-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <h3>Aerial Imaging & Payload</h3>
+          <p>Mapping, surveying, and payload delivery drones with stabilized gimbals, multispectral cameras, and precision drop mechanisms.</p>
+          <div class="project-tags-row">
+            <span>Gimbal</span><span>Thermal Cam</span><span>Mapping</span>
+          </div>
+        </div>
+
+        <div class="project-card" id="project-swarm">
+          <div class="project-tag">Research</div>
+          <div class="project-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 9v6M9 6h6M9 18h6M15 6l3 3"/></svg>
+          </div>
+          <h3>Swarm Drone Research</h3>
+          <p>Exploring multi-agent drone coordination using distributed algorithms, mesh communication, and emergent swarm behaviors.</p>
+          <div class="project-tags-row">
+            <span>MAVSDK</span><span>Mesh WiFi</span><span>Python</span>
+          </div>
+        </div>
+
+        <div class="project-card" id="project-custom">
+          <div class="project-tag">Design</div>
+          <div class="project-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Custom Airframe Design</h3>
+          <p>CAD-designed custom frames manufactured via 3D printing and CNC milling, optimized for aerodynamic efficiency and structural rigidity.</p>
+          <div class="project-tags-row">
+            <span>SolidWorks</span><span>3D Printing</span><span>CNC</span>
+          </div>
+        </div>
+
+        <div class="project-card" id="project-vision">
+          <div class="project-tag">AI / Vision</div>
+          <div class="project-icon-wrap">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>AI-Powered Vision System</h3>
+          <p>Real-time object detection, target tracking, and scene understanding onboard drones using edge AI hardware and deep learning models.</p>
+          <div class="project-tags-row">
+            <span>YOLOv8</span><span>Jetson Nano</span><span>TensorRT</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EVENTS ========== -->
+  <section id="events" class="section events-section" aria-label="Events and Activities">
+    <div class="events-bg-overlay"></div>
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">What's Happening</span>
+        <h2 class="section-title white">Events & <span class="gradient-text">Activities</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="events-featured events-placeholder" id="events-placeholder">
+        <span class="event-category">Updating</span>
+        <h3>Events Calendar Will Be Published Soon</h3>
+        <p>We are refreshing the events section for 2026. Workshops, competitions, and flight sessions at NIE Mysuru will be updated here shortly.</p>
+        <div class="event-meta">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> The National Institute of Engineering, Mysuru</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TEAM ========== -->
+  <section id="team" class="section team-section" aria-label="Team section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Club Committee</span>
+        <h2 class="section-title">Meet the <span class="gradient-text">Team</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Faculty / Admin -->
+      <div class="team-tier-label">Patron & Chief Advisor</div>
+      <div class="team-grid team-grid-faculty">
+
+        <div class="team-card" id="team-patron">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Dr. Nagendra Parashar</h3>
+            <span class="team-role">Patron · Principal, NIE Mysuru</span>
+            <p>Providing institutional leadership and support to Raptor Dynamics.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-cio">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Dr. Rohini Nagapadma</h3>
+            <span class="team-role">Patron · Chief Innovation Officer, NIE Mysuru</span>
+            <p>Championing innovation initiatives and driving research excellence at NIE Mysuru.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-chief-advisor-me">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Dr. H N Divakar</h3>
+            <span class="team-role">Chief Advisor · Prof & Head, Dept. of ME</span>
+            <p>Guiding mechanical and aerodynamic engineering aspects of club projects.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-chief-advisor-ec">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Dr. Rajalekshmi Kishore</h3>
+            <span class="team-role">Chief Advisor · Prof & Head, Dept. of E&C</span>
+            <p>Overseeing electronics, communication, and embedded systems for UAV development.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+      </div>
+
+      <!-- Faculty Advisors -->
+      <div class="team-tier-label">Faculty Advisors</div>
+      <div class="team-grid team-grid-2">
+
+        <div class="team-card" id="team-advisor-ashok">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12 12 0 0112 21a12 12 0 01-6.16-10.422L12 14z"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Dr. Ashok K</h3>
+            <span class="team-role">Faculty Advisor · Assoc. Prof, Dept. of E&C</span>
+            <p>Mentoring electronics and communication systems in drone hardware projects.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-advisor-anand">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12 12 0 0112 21a12 12 0 01-6.16-10.422L12 14z"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Dr. Anand A</h3>
+            <span class="team-role">Faculty Advisor · Asst. Prof, Dept. of ME</span>
+            <p>Supporting mechanical design, fabrication, and structural analysis of airframes.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+      </div>
+
+      <!-- Office Bearers -->
+      <div class="team-tier-label">Office Bearers</div>
+      <div class="team-grid">
+
+        <div class="team-card" id="team-student-president">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Student President</h3>
+            <span class="team-role">Club Leadership</span>
+            <p>Leading the club's vision, culture, and student initiatives.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-president-elect">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>President Elect</h3>
+            <span class="team-role">Leadership Pipeline</span>
+            <p>Working alongside the president and preparing for future club leadership.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-head-technical">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Head — Technical & Development</h3>
+            <span class="team-role">Engineering & Build</span>
+            <p>Overseeing all hardware build, flight systems, and technical project execution.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-head-operations">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Head — Operations & Safety Committee</h3>
+            <span class="team-role">Operations & Safety</span>
+            <p>Ensuring safe drone operations, compliance, and smooth functioning of club activities.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-head-training">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Head — Training, Events & Outreach Committee</h3>
+            <span class="team-role">Training & Events</span>
+            <p>Organising workshops, competitions, outreach programs, and member skill development.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-head-documentation">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Head — Documentation, Media & Logistics Committee</h3>
+            <span class="team-role">Media & Logistics</span>
+            <p>Managing club documentation, media content, and logistics coordination.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-exec-1">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Executive Member</h3>
+            <span class="team-role">Core Team</span>
+            <p>Contributing to club operations, projects, and technical initiatives.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-exec-2">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Executive Member</h3>
+            <span class="team-role">Core Team</span>
+            <p>Contributing to club operations, projects, and technical initiatives.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-exec-3">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Executive Member</h3>
+            <span class="team-role">Core Team</span>
+            <p>Contributing to club operations, projects, and technical initiatives.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+        <div class="team-card" id="team-exec-4">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="team-info">
+            <h3>Executive Member</h3>
+            <span class="team-role">Core Team</span>
+            <p>Contributing to club operations, projects, and technical initiatives.</p>
+          </div>
+          <div class="team-card-glow"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-glow"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo_mark_clean.png" alt="Raptor Dynamics Logo" class="footer-logo" />
+          <span class="footer-brand-name">RAPTOR <span>DYNAMICS</span></span>
+          <p>Innovate. Integrate. Elevate. Pioneering the future of drone innovation, one flight at a time.</p>
+          <div class="footer-affiliation">
+            <img src="nie-logo.svg" alt="NIE Mysuru Logo" class="footer-nie-logo" />
+            <div>
+              <span class="footer-affiliation-label">NIE Mysuru</span>
+              <span class="footer-affiliation-name">The National Institute of Engineering, Mysuru</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link" id="social-instagram" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </a>
+            <a href="#" class="social-link" id="social-linkedin" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="social-link" id="social-youtube" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="#" class="social-link" id="social-twitter" aria-label="Twitter / X">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home" id="footer-home">Home</a></li>
+            <li><a href="#about" id="footer-about">About Us</a></li>
+            <li><a href="#vision" id="footer-vision">Vision & Mission</a></li>
+            <li><a href="#projects" id="footer-projects">Projects</a></li>
+            <li><a href="#events" id="footer-events">Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Get Involved</h4>
+          <ul>
+            <li><a href="#join" id="footer-join">Join the Club</a></li>
+            <li><a href="#events" id="footer-workshops">Workshops</a></li>
+            <li><a href="#projects" id="footer-competitions">Competitions</a></li>
+            <li><a href="#team" id="footer-team">Meet the Team</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            raptordynamics@college.edu
+          </p>
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 018.1-8.94"/><circle cx="12" cy="10" r="3"/></svg>
+            Club Room, Engineering Block, Room 204, The National Institute of Engineering, Mysuru
+          </p>
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Meetings: Every Saturday, 4:00 PM
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Raptor Dynamics — The National Institute of Engineering, Mysuru. All rights reserved.</p>
+        <p>NIE Mysuru Drone Innovation Club</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top-btn" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
