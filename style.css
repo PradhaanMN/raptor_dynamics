@@ -803,21 +803,24 @@ textarea { resize: vertical; }
 
 .drone-showcase {
   position: relative;
+  width: min(360px, 90vw);
+  display: flex;
+  justify-content: center;
 }
 
 .drone-card {
   position: relative;
-  width: 320px;
-  height: 320px;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(145deg, rgba(8, 14, 28, 0.88), rgba(18, 24, 44, 0.94));
-  border: 1px solid rgba(245, 183, 0, 0.24);
+  width: min(320px, 82vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 22px 50px rgba(0, 0, 0, 0.45);
-  animation: float 6s ease-in-out infinite;
+  overflow: visible;
+  box-shadow: none;
+  animation: none;
 }
 
 @keyframes float {
@@ -826,22 +829,16 @@ textarea { resize: vertical; }
 }
 
 .drone-card-glow {
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: var(--grad-primary);
-  opacity: 0.3;
-  z-index: -1;
-  filter: blur(20px);
+  display: none;
 }
 
 .drone-logo-large {
-  width: 80%;
-  height: 80%;
+  width: 92%;
+  height: auto;
   object-fit: contain;
-    filter: invert(1) sepia(55%) saturate(1350%) hue-rotate(352deg) brightness(0.92) contrast(1.08)
-      drop-shadow(0 0 18px rgba(245, 183, 0, 0.3));
-  opacity: 0.96;
+  filter: invert(79%) sepia(52%) saturate(822%) hue-rotate(356deg) brightness(0.98) contrast(1.05);
+  image-rendering: -webkit-optimize-contrast;
+  opacity: 1;
 }
 
 .floating-badge {
@@ -1019,6 +1016,76 @@ textarea { resize: vertical; }
   height: 7px;
   background: var(--grad-primary);
   border-radius: 50%;
+}
+
+/* =====================================================
+   SYSTEMS / IMPACT / EXECUTION
+   ===================================================== */
+.approach-section {
+  background: var(--clr-bg-2);
+}
+
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.approach-card {
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  transition: var(--trans-med);
+}
+
+.approach-card:hover {
+  border-color: var(--clr-border-glow);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.approach-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  letter-spacing: 0.04em;
+}
+
+.approach-subline {
+  margin-top: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.83rem;
+  color: var(--clr-accent);
+  letter-spacing: 0.02em;
+}
+
+.approach-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.approach-list li {
+  position: relative;
+  font-size: 0.83rem;
+  color: var(--clr-text-muted);
+  line-height: 1.45;
+  border: 1px solid rgba(245,183,0,0.14);
+  background: rgba(245,183,0,0.05);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.6rem 0.5rem 1.15rem;
+}
+
+.approach-list li::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.82rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--clr-accent);
 }
 
 /* =====================================================
@@ -1971,6 +2038,14 @@ textarea { resize: vertical; }
     right: 1rem;
   }
 
+  .approach-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .approach-card:last-child {
+    grid-column: span 2;
+  }
+
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2072,16 +2147,20 @@ textarea { resize: vertical; }
 
   .about-grid,
   .vm-grid,
+  .approach-grid,
   .events-layout,
   .join-layout {
     grid-template-columns: 1fr;
   }
 
+  .approach-card:last-child {
+    grid-column: auto;
+  }
+
   .about-visual { order: -1; }
 
   .drone-card {
-    width: 240px;
-    height: 240px;
+    width: min(240px, 76vw);
   }
 
   .projects-grid {
