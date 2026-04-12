@@ -72,6 +72,7 @@
   /* Layout */
   --max-width: 1200px;
   --nav-height: 72px;
+  --nav-side-width: 250px;
 }
 
 html {
@@ -271,10 +272,10 @@ textarea { resize: vertical; }
   height: 100%;
   margin: 0 auto;
   padding: 0 var(--space-md);
-  display: flex;
+  display: grid;
+  grid-template-columns: var(--nav-side-width) 1fr var(--nav-side-width);
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
+  gap: 0.9rem;
 }
 
 .nav-logo {
@@ -282,6 +283,7 @@ textarea { resize: vertical; }
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
+  justify-self: start;
 }
 
 .nav-logo-img {
@@ -316,6 +318,41 @@ textarea { resize: vertical; }
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  justify-self: center;
+}
+
+.nav-nie-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  justify-self: end;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--clr-border);
+  background: rgba(13,15,26,0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  min-width: 0;
+}
+
+.nav-nie-badge .hero-inst-text {
+  min-width: 0;
+}
+
+.nav-nie-badge .hero-inst-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-nie-badge .hero-inst-tag {
+  font-size: 0.6rem;
+  margin-bottom: 0.1rem;
+}
+
+.nav-nie-badge .hero-inst-name {
+  font-size: 0.74rem;
+  line-height: 1.25;
+  max-width: 250px;
 }
 
 .nav-link {
@@ -370,6 +407,7 @@ textarea { resize: vertical; }
   background: none;
   padding: 8px;
   border-radius: var(--radius-sm);
+  justify-self: end;
 }
 
 .nav-hamburger span {
@@ -1921,6 +1959,14 @@ textarea { resize: vertical; }
    RESPONSIVE
    ===================================================== */
 @media (max-width: 1024px) {
+  :root {
+    --nav-side-width: 170px;
+  }
+
+  .nav-nie-badge .hero-inst-name {
+    display: none;
+  }
+
   .hero-institution-floating {
     right: 1rem;
   }
@@ -1946,6 +1992,15 @@ textarea { resize: vertical; }
   :root {
     --space-xl: 3rem;
     --space-2xl: 4rem;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-nie-badge {
+    display: none;
   }
 
   .hero-institution-card {
