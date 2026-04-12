@@ -144,7 +144,7 @@
 
   /* --- load real drone PNG ------------------------------- */
   const droneImg = new Image();
-  droneImg.src = 'drone.png';
+  droneImg.src = 'assets/images/drone.png';
 
   /* --- S-curve waypoints (fractions of W, H) ------------- */
   // Mirrors the glowing S-curve in hero_bg.png:
