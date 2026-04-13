@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raptor Dynamics Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="eyebrow">Raptor Dynamics</p>
+        <h1>Admin Content Manager</h1>
+      </div>
+      <div class="header-actions">
+        <span id="admin-user" class="admin-user"></span>
+        <button id="logout-btn" type="button" class="btn ghost hidden">Logout</button>
+      </div>
+    </header>
+
+    <section id="login-panel" class="panel">
+      <h2>Admin Login</h2>
+      <p class="panel-copy">Use your admin credentials to manage advisor/member photos and events.</p>
+      <form id="login-form" class="form-grid" autocomplete="off">
+        <label>
+          Username
+          <input id="login-username" name="username" type="text" required />
+        </label>
+        <label>
+          Password
+          <input id="login-password" name="password" type="password" required />
+        </label>
+        <button type="submit" class="btn">Sign In</button>
+      </form>
+      <p id="login-status" class="status"></p>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="panel">
+        <h2>Team Photo Updates</h2>
+        <p class="panel-copy">Upload a new profile photo for any advisor, office bearer, or member card.</p>
+        <form id="team-photo-form" class="form-grid" enctype="multipart/form-data">
+          <label>
+            Team Profile
+            <select id="team-id" name="teamId" required></select>
+          </label>
+          <label>
+            New Photo
+            <input id="team-photo" name="photo" type="file" accept="image/*" required />
+          </label>
+          <button type="submit" class="btn">Upload Team Photo</button>
+        </form>
+        <p id="team-status" class="status"></p>
+        <div id="team-photo-grid" class="team-photo-grid"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Events Manager</h2>
+        <p class="panel-copy">Create, update, and remove events with image banners.</p>
+        <form id="event-form" class="form-grid" enctype="multipart/form-data">
+          <input id="event-id" name="eventId" type="hidden" />
+          <label>
+            Event Title
+            <input id="event-title" name="title" type="text" required />
+          </label>
+          <label>
+            Event Type
+            <input id="event-type" name="type" type="text" placeholder="Workshop / Demo / Competition" />
+          </label>
+          <label>
+            Event Date
+            <input id="event-date" name="date" type="date" />
+          </label>
+          <label>
+            Event Photo
+            <input id="event-photo" name="photo" type="file" accept="image/*" />
+          </label>
+          <label class="full-width">
+            Description
+            <textarea id="event-description" name="description" rows="4" placeholder="What is this event about?"></textarea>
+          </label>
+          <label id="remove-photo-wrap" class="checkbox-row hidden full-width">
+            <input id="event-remove-photo" name="removePhoto" type="checkbox" /> Remove current event photo
+          </label>
+          <div class="form-actions full-width">
+            <button type="submit" class="btn" id="event-submit-btn">Create Event</button>
+            <button type="button" class="btn ghost hidden" id="event-cancel-btn">Cancel Edit</button>
+          </div>
+        </form>
+        <p id="event-status" class="status"></p>
+
+        <div id="event-admin-list" class="event-admin-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

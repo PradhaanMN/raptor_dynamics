@@ -12,3 +12,17 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Node
+node_modules/
+
+# Environment secrets
+.env
+
+# Runtime uploads
+uploads/*
+!uploads/.gitkeep
+!uploads/team/
+!uploads/team/.gitkeep
+!uploads/events/
+!uploads/events/.gitkeep

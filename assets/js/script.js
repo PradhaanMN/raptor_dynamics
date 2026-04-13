@@ -703,5 +703,109 @@
   hero.appendChild(grid);
 })();
 
+/* ======================
+   CMS CONTENT (TEAM PHOTOS + EVENTS)
+   ====================== */
+(function initCmsContent() {
+  const eventsContainer = document.getElementById('events-public-list');
+  const eventsPlaceholder = document.getElementById('events-placeholder');
+
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatDate(value) {
+    if (!value) return '';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+    return date.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  }
+
+  function applyTeamPhotos(teamPhotos) {
+    if (!teamPhotos || typeof teamPhotos !== 'object') return;
+
+    Object.entries(teamPhotos).forEach(([teamId, photoUrl]) => {
+      if (!photoUrl) return;
+
+      const card = document.getElementById(teamId);
+      const avatar = card?.querySelector('.team-avatar');
+      if (!avatar) return;
+
+      const personName = card.querySelector('.team-info h3')?.textContent?.trim() || 'Team member';
+
+      let image = avatar.querySelector('img.team-photo');
+      if (!image) {
+        avatar.innerHTML = '';
+        image = document.createElement('img');
+        image.className = 'team-photo';
+        avatar.appendChild(image);
+      }
+
+      avatar.dataset.hasPhoto = 'true';
+      image.alt = `${personName} photo`;
+      image.src = `${photoUrl}${photoUrl.includes('?') ? '&' : '?'}v=${Date.now()}`;
+    });
+  }
+
+  function renderEvents(events) {
+    if (!eventsContainer) return;
+
+    if (!Array.isArray(events) || !events.length) {
+      eventsContainer.innerHTML = '';
+      if (eventsPlaceholder) eventsPlaceholder.hidden = false;
+      return;
+    }
+
+    if (eventsPlaceholder) eventsPlaceholder.hidden = true;
+
+    eventsContainer.innerHTML = events.map((event) => {
+      const title = escapeHtml(event.title || 'Untitled Event');
+      const type = escapeHtml(event.type || 'Club Event');
+      const description = escapeHtml(event.description || 'Details will be shared soon.');
+      const dateLabel = event.date ? `<p class="event-live-date">${escapeHtml(formatDate(event.date))}</p>` : '';
+      const media = event.photoUrl
+        ? `<img src="${escapeHtml(event.photoUrl)}?v=${Date.now()}" alt="${title}" loading="lazy" />`
+        : '<div class="event-live-media-placeholder">Photo Updating Soon</div>';
+
+      return `
+        <article class="event-live-card">
+          <div class="event-live-media">${media}</div>
+          <div class="event-live-body">
+            <span class="event-type">${type}</span>
+            <h3>${title}</h3>
+            ${dateLabel}
+            <p>${description}</p>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  fetch('/api/public/content', { cache: 'no-store' })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('CMS backend not reachable');
+      }
+      return response.json();
+    })
+    .then((content) => {
+      applyTeamPhotos(content.teamPhotos);
+      renderEvents(content.events);
+    })
+    .catch(() => {
+      // Keep static fallback content when backend is unavailable.
+      if (eventsPlaceholder) eventsPlaceholder.hidden = false;
+    });
+})();
+
 console.log('%c✈ RAPTOR DYNAMICS — Built for the Sky', 'color:#F5B700;font-family:monospace;font-size:14px;font-weight:bold;');
 
