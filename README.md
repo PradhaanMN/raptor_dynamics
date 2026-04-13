@@ -100,7 +100,7 @@ Uploaded files are saved under `uploads/team/` and `uploads/events/`.
 GitHub Pages is static-only, so the admin backend and uploads will not run there.
 Deploy `server.js` on a Node-capable host (for example Render, Railway, Fly.io, VPS) to use login, uploads, and live updates.
 
-## Deploy Online (Render, With Persistent Uploads)
+## Deploy Online (Render)
 
 1. Push this repository to GitHub (already done in your case).
 2. Open Render dashboard and choose `New` -> `Blueprint`.
@@ -113,10 +113,22 @@ Deploy `server.js` on a Node-capable host (for example Render, Railway, Fly.io, 
 	`https://<your-render-service>.onrender.com/`
 	`https://<your-render-service>.onrender.com/admin`
 
+### Free Plan Behavior
+
+- The included `render.yaml` is configured for Render free tier.
+- Uploads and CMS edits are stored in ephemeral storage (`/tmp/raptor-data`).
+- Data will reset when the instance restarts or redeploys.
+
+### Enable Persistent Uploads (Paid Plan)
+
+- Upgrade the service to a paid Render plan that supports disks.
+- Add a disk mount (for example `/var/data`).
+- Set `STORAGE_ROOT=/var/data` in Render environment variables.
+
 ### Why This Works
 
 - The service runs the Node backend (not static-only hosting).
-- Uploaded images and CMS data are stored on a mounted disk (`/var/data`).
+- Uploaded images and CMS data are stored by the backend; on free plan this storage is temporary.
 - Team photos and events updated in admin will appear on the public site URL.
 
 ### Common Mistake
