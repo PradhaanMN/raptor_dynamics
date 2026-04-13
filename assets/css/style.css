@@ -2072,6 +2072,24 @@ textarea { resize: vertical; }
   .nav-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: var(--nav-height);
+    position: relative;
+  }
+
+  .nav-logo {
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .nav-brand {
+    font-size: 0.86rem;
+    letter-spacing: 0.05em;
+  }
+
+  .brand-accent {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
   }
 
   .nav-nie-badge {
@@ -2128,12 +2146,22 @@ textarea { resize: vertical; }
     padding: var(--space-md);
     gap: 0.25rem;
     border-bottom: 1px solid var(--clr-border);
-    transform: translateY(-110%);
-    transition: transform var(--trans-med);
+    max-height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+    transform: translateY(calc(-100% - var(--nav-height)));
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform var(--trans-med), opacity var(--trans-med), visibility var(--trans-med);
     z-index: 999;
   }
 
-  .nav-links.open { transform: translateY(0); }
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
 
   .nav-link {
     width: 100%;
@@ -2141,7 +2169,10 @@ textarea { resize: vertical; }
     padding: 0.85rem;
   }
 
-  .nav-link.nav-cta { border-radius: var(--radius-sm); }
+  .nav-link.nav-cta {
+    border-radius: var(--radius-sm);
+    margin-left: 0;
+  }
 
   .nav-hamburger { display: flex; }
 
@@ -2188,6 +2219,19 @@ textarea { resize: vertical; }
 }
 
 @media (max-width: 480px) {
+  .nav-container {
+    padding: 0 0.75rem;
+  }
+
+  .nav-logo-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-brand {
+    display: none;
+  }
+
   body::before {
     background-size: 98vw;
     background-position: center 62%;
