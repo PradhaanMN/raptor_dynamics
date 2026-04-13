@@ -2070,30 +2070,64 @@ textarea { resize: vertical; }
   }
 
   .nav-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: center;
     height: var(--nav-height);
     position: relative;
+    gap: 0.45rem;
+    padding: 0 0.7rem;
   }
 
   .nav-logo {
-    gap: 0.5rem;
+    gap: 0.4rem;
     min-width: 0;
+    overflow: hidden;
+  }
+
+  .nav-logo-img {
+    width: 36px;
+    height: 36px;
   }
 
   .nav-brand {
-    font-size: 0.86rem;
-    letter-spacing: 0.05em;
+    display: block;
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .brand-accent {
-    font-size: 0.6rem;
-    letter-spacing: 0.14em;
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
   }
 
   .nav-nie-badge {
+    display: inline-flex;
+    gap: 0.35rem;
+    padding: 0.28rem 0.38rem;
+    max-width: 110px;
+    border-radius: 10px;
+    background: rgba(13,15,26,0.78);
+  }
+
+  .nav-nie-badge .hero-inst-logo {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-nie-badge .hero-inst-tag {
     display: none;
+  }
+
+  .nav-nie-badge .hero-inst-name {
+    display: block;
+    font-size: 0.5rem;
+    line-height: 1.1;
+    max-width: none;
+    white-space: normal;
   }
 
   .hero-institution-card {
@@ -2196,6 +2230,11 @@ textarea { resize: vertical; }
     grid-template-columns: 1fr;
   }
 
+  .team-grid-faculty,
+  .team-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+
   .hero-stats {
     gap: var(--space-md);
     flex-wrap: wrap;
@@ -2214,16 +2253,37 @@ textarea { resize: vertical; }
 
 @media (max-width: 480px) {
   .nav-container {
-    padding: 0 0.75rem;
+    padding: 0 0.55rem;
+    gap: 0.35rem;
   }
 
   .nav-logo-img {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
   }
 
   .nav-brand {
-    display: none;
+    font-size: 0.64rem;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-accent {
+    font-size: 0.48rem;
+    letter-spacing: 0.08em;
+  }
+
+  .nav-nie-badge {
+    max-width: 88px;
+    padding: 0.22rem 0.3rem;
+  }
+
+  .nav-nie-badge .hero-inst-logo {
+    width: 15px;
+    height: 15px;
+  }
+
+  .nav-nie-badge .hero-inst-name {
+    font-size: 0.44rem;
   }
 
   body::before {
