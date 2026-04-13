@@ -790,6 +790,11 @@
     }).join('');
   }
 
+  const applyContent = (content) => {
+    applyTeamPhotos(content && content.teamPhotos);
+    renderEvents(content && content.events);
+  };
+
   fetch('/api/public/content', { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) {
@@ -797,13 +802,21 @@
       }
       return response.json();
     })
-    .then((content) => {
-      applyTeamPhotos(content.teamPhotos);
-      renderEvents(content.events);
-    })
+    .then(applyContent)
     .catch(() => {
-      // Keep static fallback content when backend is unavailable.
-      if (eventsPlaceholder) eventsPlaceholder.hidden = false;
+      // Static hosting fallback: read committed CMS snapshot.
+      fetch('data/cms.json', { cache: 'no-store' })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('No static CMS snapshot');
+          }
+          return response.json();
+        })
+        .then(applyContent)
+        .catch(() => {
+          // Keep static fallback content when no CMS source is available.
+          if (eventsPlaceholder) eventsPlaceholder.hidden = false;
+        });
     });
 })();
 

@@ -1,5 +1,12 @@
 {
-  "updatedAt": null,
-  "teamPhotos": {},
+  "updatedAt": "2026-04-13T08:52:34.255Z",
+  "teamPhotos": {
+    "team-patron": "/uploads/team/1776070276688-47bff236-2cdb-417a-81e4-0ea79c360496.jpg",
+    "team-cio": "/uploads/team/1776070293915-42ba48c7-33b2-4c42-8501-9e46475593c5.jpg",
+    "team-chief-advisor-me": "/uploads/team/1776070307538-1d51e035-f3d8-43dc-8598-34254108818c.jpg",
+    "team-chief-advisor-ec": "/uploads/team/1776070315630-67678ccf-03e4-419e-b192-fffcf06c926f.png",
+    "team-advisor-ashok": "/uploads/team/1776070343894-5b4211bc-2af3-4c37-a8dc-56f7773ddab2.jpg",
+    "team-advisor-anand": "/uploads/team/1776070354253-54719ade-06ba-4006-b132-a612c5568745.jpg"
+  },
   "events": []
 }
