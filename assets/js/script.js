@@ -729,7 +729,59 @@
 
     const repoBase = getRepoBasePath();
     const normalized = String(value).replace(/^\/+/, '');
+
+    if (repoBase) {
+      const repoBaseNoSlash = repoBase.replace(/^\/+/, '');
+      if (normalized.startsWith(repoBaseNoSlash + '/')) {
+        return `/${normalized}`;
+      }
+    }
+
     return `${repoBase}/${normalized}`;
+  }
+
+  function buildPhotoCandidates(photoUrl) {
+    if (!photoUrl) return [];
+
+    if (/^(https?:)?\/\//i.test(photoUrl)) {
+      return [photoUrl];
+    }
+
+    const repoBase = getRepoBasePath();
+    const normalized = String(photoUrl).replace(/^\/+/, '');
+    const candidates = new Set();
+
+    candidates.add(resolvePublicPath(photoUrl));
+    candidates.add('/' + normalized);
+    candidates.add(normalized);
+
+    if (repoBase) {
+      candidates.add(`${repoBase}/${normalized}`);
+    }
+
+    return Array.from(candidates).filter(Boolean);
+  }
+
+  function setImageWithFallback(image, photoUrl) {
+    const candidates = buildPhotoCandidates(photoUrl);
+    if (!candidates.length) return;
+
+    let index = 0;
+    const stamp = Date.now();
+
+    const setNext = () => {
+      if (index >= candidates.length) {
+        image.onerror = null;
+        return;
+      }
+
+      const candidate = candidates[index++];
+      const separator = candidate.includes('?') ? '&' : '?';
+      image.src = `${candidate}${separator}v=${stamp}`;
+    };
+
+    image.onerror = setNext;
+    setNext();
   }
 
   function escapeHtml(value) {
@@ -774,8 +826,7 @@
 
       avatar.dataset.hasPhoto = 'true';
       image.alt = `${personName} photo`;
-      const resolvedPhotoUrl = resolvePublicPath(photoUrl);
-      image.src = `${resolvedPhotoUrl}${resolvedPhotoUrl.includes('?') ? '&' : '?'}v=${Date.now()}`;
+      setImageWithFallback(image, photoUrl);
     });
   }
 
