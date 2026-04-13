@@ -46,11 +46,19 @@ function loadDotEnvFile() {
 loadDotEnvFile();
 
 const ROOT = __dirname;
-const DATA_DIR = path.join(ROOT, 'data');
+const STORAGE_ROOT = process.env.STORAGE_ROOT
+  ? path.resolve(process.env.STORAGE_ROOT)
+  : ROOT;
+const DATA_DIR = process.env.CMS_DATA_DIR
+  ? path.resolve(process.env.CMS_DATA_DIR)
+  : path.join(STORAGE_ROOT, 'data');
 const CMS_FILE = path.join(DATA_DIR, 'cms.json');
-const UPLOADS_DIR = path.join(ROOT, 'uploads');
+const UPLOADS_DIR = process.env.CMS_UPLOADS_DIR
+  ? path.resolve(process.env.CMS_UPLOADS_DIR)
+  : path.join(STORAGE_ROOT, 'uploads');
 const TEAM_UPLOAD_DIR = path.join(UPLOADS_DIR, 'team');
 const EVENTS_UPLOAD_DIR = path.join(UPLOADS_DIR, 'events');
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 const MAX_UPLOAD_BYTES = 8 * 1024 * 1024;
 
@@ -166,7 +174,8 @@ async function removeFileByPublicPath(publicPath) {
   if (!publicPath.startsWith('/uploads/')) return;
 
   const normalized = publicPath.replace(/^\/+/, '');
-  const absolutePath = path.resolve(ROOT, normalized);
+  const relativeUploadPath = normalized.replace(/^uploads[\\/]/, '');
+  const absolutePath = path.resolve(UPLOADS_DIR, relativeUploadPath);
   const uploadsRoot = path.resolve(UPLOADS_DIR);
 
   if (!absolutePath.startsWith(uploadsRoot)) return;
@@ -190,6 +199,10 @@ function createApp() {
   const app = express();
   app.disable('x-powered-by');
 
+  if (IS_PRODUCTION) {
+    app.set('trust proxy', 1);
+  }
+
   const adminUsername = process.env.ADMIN_USERNAME || 'admin';
   const adminPassword = process.env.ADMIN_PASSWORD || 'change-this-now';
 
@@ -200,16 +213,21 @@ function createApp() {
     session({
       name: 'raptor.admin.sid',
       secret: process.env.SESSION_SECRET || 'change-this-session-secret',
+      proxy: IS_PRODUCTION,
       resave: false,
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
         sameSite: 'lax',
-        secure: false,
+        secure: IS_PRODUCTION,
         maxAge: 8 * 60 * 60 * 1000
       }
     })
   );
+
+  app.get('/api/public/health', (_req, res) => {
+    res.json({ ok: true });
+  });
 
   app.get('/api/public/content', async (_req, res) => {
     const cms = await loadCms();
@@ -405,6 +423,8 @@ async function startServer() {
   app.listen(port, () => {
     console.log(`Raptor admin backend running on http://localhost:${port}`);
     console.log('Admin panel: http://localhost:' + port + '/admin');
+    console.log('Storage root: ' + STORAGE_ROOT);
+    console.log('CMS file: ' + CMS_FILE);
   });
 }
 

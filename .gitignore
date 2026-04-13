@@ -20,7 +20,7 @@ node_modules/
 .env
 
 # Runtime uploads
-uploads/*
+uploads/**
 !uploads/.gitkeep
 !uploads/team/
 !uploads/team/.gitkeep
