@@ -710,6 +710,28 @@
   const eventsContainer = document.getElementById('events-public-list');
   const eventsPlaceholder = document.getElementById('events-placeholder');
 
+  function getRepoBasePath() {
+    // GitHub project pages are served under /<repo-name>/, not from domain root.
+    if (!window.location.hostname.endsWith('github.io')) {
+      return '';
+    }
+
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    return segments.length ? `/${segments[0]}` : '';
+  }
+
+  function resolvePublicPath(value) {
+    if (!value) return '';
+
+    if (/^(https?:)?\/\//i.test(value)) {
+      return value;
+    }
+
+    const repoBase = getRepoBasePath();
+    const normalized = String(value).replace(/^\/+/, '');
+    return `${repoBase}/${normalized}`;
+  }
+
   function escapeHtml(value) {
     return String(value || '')
       .replace(/&/g, '&amp;')
@@ -752,7 +774,8 @@
 
       avatar.dataset.hasPhoto = 'true';
       image.alt = `${personName} photo`;
-      image.src = `${photoUrl}${photoUrl.includes('?') ? '&' : '?'}v=${Date.now()}`;
+      const resolvedPhotoUrl = resolvePublicPath(photoUrl);
+      image.src = `${resolvedPhotoUrl}${resolvedPhotoUrl.includes('?') ? '&' : '?'}v=${Date.now()}`;
     });
   }
 
@@ -772,8 +795,9 @@
       const type = escapeHtml(event.type || 'Club Event');
       const description = escapeHtml(event.description || 'Details will be shared soon.');
       const dateLabel = event.date ? `<p class="event-live-date">${escapeHtml(formatDate(event.date))}</p>` : '';
+      const resolvedEventPhotoUrl = resolvePublicPath(event.photoUrl);
       const media = event.photoUrl
-        ? `<img src="${escapeHtml(event.photoUrl)}?v=${Date.now()}" alt="${title}" loading="lazy" />`
+        ? `<img src="${escapeHtml(resolvedEventPhotoUrl)}?v=${Date.now()}" alt="${title}" loading="lazy" />`
         : '<div class="event-live-media-placeholder">Photo Updating Soon</div>';
 
       return `
@@ -795,7 +819,7 @@
     renderEvents(content && content.events);
   };
 
-  fetch('/api/public/content', { cache: 'no-store' })
+  fetch(`${resolvePublicPath('/api/public/content')}`, { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) {
         throw new Error('CMS backend not reachable');
@@ -805,7 +829,7 @@
     .then(applyContent)
     .catch(() => {
       // Static hosting fallback: read committed CMS snapshot.
-      fetch('data/cms.json', { cache: 'no-store' })
+      fetch(resolvePublicPath('data/cms.json'), { cache: 'no-store' })
         .then((response) => {
           if (!response.ok) {
             throw new Error('No static CMS snapshot');
